@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+<div class="container mt-4">
+    <h1>Confirm Delete</h1>
+    <p>
+        Are you sure you want to delete 
+        <strong>{% if delete_all %} all consumed items {% else %} {{ object.food_consumed.name }} {% endif %}?</strong>
+    </p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">{% if delete_all %}Yes, delete all{% else %}Yes, delete{% endif %}</button>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>
